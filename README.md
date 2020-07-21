@@ -3,11 +3,11 @@
 ## Text preprocessing and vocabulary building using `Texthero` 
 * default texthero preprocessing used for cleaning a dataset. Finally, we got 359985 words for negative sentiments, and 442559 words for positive sentiments.
 * vocabulary lengths for different term frequency thresholds are(words with higher than term frequency thresholds took into consideration while making vocabulary):
-      * ft:0, vocabulary lenght:802544
-      * ft:5, vocabulary lenght:51758 (this was chosen for TF-IDF vocabulary)
-      * ft:25, vocabulary lenght:15658
-      * ft:50, vocabulary lenght:9896
-      * ft:100, vocabulary lenght:6138
+    * ft:0, vocabulary lenght:802544
+    * ft:5, vocabulary lenght:51758 (this was chosen for TF-IDF vocabulary)
+    * ft:25, vocabulary lenght:15658
+    * ft:50, vocabulary lenght:9896
+    * ft:100, vocabulary lenght:6138
 * WordClouds using `Texthero` 
 
 <table>
@@ -25,7 +25,8 @@
 ## TFIDF Representation
 
 **TF-IDF Representation**: TF-IDF works by determining the relative frequency of words in a specific document compared to the inverse proportion of that word over the entire document corpus. It's used with a vocabulary size of `51758` to take only words with term frequency of higher than `25` in positive and negative samples.
-```
+
+```python
 transformer=TfidfVectorizer(vocabulary=vocabs)
 ```
 
@@ -36,8 +37,8 @@ transformer=TfidfVectorizer(vocabulary=vocabs)
 **Perceptron Classifier**: A basic Neural Network used for sentiment analysis.
 
 **MLP Classifier**: A Multi-layer Perceptron classifier that uses log-loss function using LBFGS or stochastic gradient descent. [sklearn](https://scikit-learn.org/stable/modules/generated/sklearn.neural_network.MLPClassifier.html). MLP with a 2-hidden layer with 100 neurons on each layer respectively introduced, with a batch size of `512`. Due to a large number of samples in the dataset, and time complexity of training, I set `max_iter` to `20` epoch.
-*
-```
+
+```python
 MLPClassifier(hidden_layer_sizes=(100,100),batch_size=512, max_iter=20, verbose=True)
 ```
 
